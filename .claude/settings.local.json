@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(sf-connected-apps)",
+      "Skill(sf-connected-apps:*)",
+      "Bash(sf org *)",
+      "Bash(sf data *)",
+      "PowerShell($env:SF_DISABLE_AUTOUPDATE=1; sf data query --query \"SELECT Id, Name FROM ConnectedApplication WHERE Name='AgentforceAPI'\" --target-org Rubi --use-tooling-api 2>&1 | Select-Object -Last 15)",
+      "PowerShell(sf data query --query \"SELECT ConnectedAppId, ClientCredentialUser FROM ConnectedAppOauthPolicy WHERE ConnectedAppId='0H4dM00000BMAYfSAP'\" --target-org Rubi --use-tooling-api 2>&1)"
+    ]
+  }
+}
