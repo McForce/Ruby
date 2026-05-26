@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Set-Location \"c:\\\\Users\\\\DesmondMcDonald\\\\Desktop\\\\VS Code Projects\\\\Rubi\"; $token = \\(sf org display --target-org Rubi --json 2>$null | ConvertFrom-Json\\).result.accessToken; $instance = \"https://orgfarm-a1df47453b-dev-ed.develop.my.salesforce.com\"; try { $r = Invoke-RestMethod -Uri \"$instance/services/data/v66.0/\" -Headers @{ Authorization = \"Bearer $token\" } -Method GET; $r.PSObject.Properties | Where-Object { $_.Value -match \"agent|einstein|copilot|ai\" -or $_.Name -match \"agent|einstein|copilot|ai\" } } catch { Write-Host \"Error: $_\" })",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\DesmondMcDonald\\\\Desktop\\\\VS Code Projects\\\\Rubi\"; $token = \\(sf org display --target-org Rubi --json 2>$null | ConvertFrom-Json\\).result.accessToken; $instance = \"https://orgfarm-a1df47453b-dev-ed.develop.my.salesforce.com\"; try { $r = Invoke-RestMethod -Uri \"$instance/services/data/v66.0/ai\" -Headers @{ Authorization = \"Bearer $token\" } -Method GET; $r | ConvertTo-Json -Depth 4 } catch { Write-Host \"Error: $_\" })",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\DesmondMcDonald\\\\Desktop\\\\VS Code Projects\\\\Rubi\"; sf project deploy start --source-dir force-app/main/default/lwc/customerThreeSixtyView --target-org Rubi 2>&1 | Where-Object { $_ -match \"Succeeded|Failed|Problem|accApi\" } | Select-Object -Last 5)",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\DesmondMcDonald\\\\Desktop\\\\VS Code Projects\\\\Rubi\"; sf project deploy start --source-dir force-app/main/default/lwc/customerThreeSixtyView --target-org Rubi 2>&1 | Where-Object { $_ -match \"Succeeded|Failed|Changed\" } | Select-Object -Last 6)",
+      "PowerShell(sf data query --query \"SELECT Id, Label, QualifiedApiName, DataspaceApiName, Category, Status FROM DataModelObj WHERE QualifiedApiName = 'C360_Profitability_TestData_v2'\" --target-org Rubi --use-tooling-api 2>&1)",
+      "PowerShell(sf org display --target-org Rubi --json 2>&1)",
+      "PowerShell(sf org display --target-org Rubi --json | Out-String | ConvertFrom-Json | ForEach-Object { $_.result } | Select-Object instanceUrl, accessToken)"
+    ]
+  }
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <developerName>Account_FAQ</developerName>
+    <masterLabel>Account FAQ</masterLabel>
+    <overridable>false</overridable>
+    <templateVersions>
+        <content>You are Ruby, a virtual assistant for an Absa Business Banking relationship banker.
+
+The banker has an Account record open and is asking the following question:
+&quot;{!$Input:Query}&quot;
+
+Below is the live Customer 360 profile for that Account, sourced from Salesforce CRM and Salesforce Data Cloud.
+
+ACCOUNT
+- Name: {!$Apex:BB_C360_Controller.accountName}
+- Industry: {!$Apex:BB_C360_Controller.industry}
+
+RELATIONSHIP
+- FICA Compliant: {!$Apex:BB_C360_Controller.ficaCifFlag}
+- Length of Relationship (years): {!$Apex:BB_C360_Controller.lengthOfRelationship}
+- VAPM (Value Added Per Month): {!$Apex:BB_C360_Controller.vapm}
+
+REVENUE AND EXPOSURE (ZAR)
+- Total Revenue: {!$Apex:BB_C360_Controller.totalRevenue}
+- Total Exposure: {!$Apex:BB_C360_Controller.totalExposure}
+- Cost to Serve: {!$Apex:BB_C360_Controller.costToServe}
+
+PROFITABILITY (ZAR, sourced from Data Cloud)
+- Profit Before Tax: {!$Apex:BB_C360_Controller.profitBeforeTax}
+- Profit After Tax: {!$Apex:BB_C360_Controller.profitAfterTax}
+- Client Profitability: {!$Apex:BB_C360_Controller.clientProfitability}
+
+RESPONSE RULES — follow these exactly:
+1. Reply with ONLY the specific metric or piece of information the banker asked about. Never list other fields.
+2. Reply in one natural conversational English sentence. No bullet lists, no JSON, no labels-and-values, no multi-line dumps, no echoing of this profile.
+3. Format ZAR currency amounts compactly: values 1,000,000 or more as &quot;R 1.3m&quot;; values 1,000 to 999,999 as &quot;R 748k&quot;; smaller values as &quot;R 84&quot;. Never output a raw number like 1320000.
+4. For FICA status, say &quot;FICA compliant&quot; or &quot;not FICA compliant&quot; — never &quot;true&quot;/&quot;false&quot;.
+5. For length of relationship, say e.g. &quot;5 years&quot; or &quot;1 year&quot;.
+6. If the banker&apos;s question is not answerable from the data above, briefly say you do not have that information for this account.
+7. If the question is ambiguous about which metric they want, ask a single short clarifying question.
+
+Your reply:</content>
+        <fileDroppingStrategy>{&quot;dropFilesBy&quot;:&quot;LAST_MODIFIED_DATE&quot;,&quot;dropFileStartingWith&quot;:&quot;OLDEST&quot;}</fileDroppingStrategy>
+        <inputs>
+            <apiName>Account</apiName>
+            <definition>SOBJECT://Account</definition>
+            <masterLabel>Account</masterLabel>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <inputs>
+            <apiName>Query</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>Query</masterLabel>
+            <referenceName>Input:Query</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultGPT5Mini</primaryModel>
+        <status>Draft</status>
+        <templateDataProviders>
+            <definition>apex://BB_C360_Controller</definition>
+            <description>Returns the Customer 360 profile for an Account: name, industry, FICA status, relationship length, VAPM, revenue, exposure, cost to serve, PBT, PAT, and client profitability.</description>
+            <label>Get Customer 360 Account Data</label>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>false</isRequired>
+                <parameterName>accountIds</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <referenceName>Apex:BB_C360_Controller</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>QSeaTpgX8fMLkB6WUarvfxiwLAtR9kbP0C0ijFHWjwc=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

@@ -1,0 +1,258 @@
+<template>
+    <div class="c360-wrapper">
+
+        <!-- ═══════════════════════════════════════════════════ HEADER ══ -->
+        <div class="c360-header">
+            <div class="c360-header-left">
+                <div class="c360-absa-logo" aria-label="Absa">
+                    <span class="c360-logo-inner">absal</span>
+                </div>
+                <span class="c360-header-title">
+                    Business Banking &mdash; Customer Insights &amp; FICA Compliance
+                </span>
+            </div>
+            <div class="c360-header-center">
+                <span class="c360-account-pill">
+                    {accountName}
+                    <lightning-icon icon-name="utility:chevrondown" size="xx-small" class="c360-chevron"></lightning-icon>
+                </span>
+            </div>
+            <div class="c360-header-right">
+                <div class="c360-rm-block">
+                    <span class="c360-rm-name">{rmName}</span>
+                    <span class="c360-rm-role">RELATIONSHIP BANKER</span>
+                </div>
+                <div class="c360-rm-avatar" aria-hidden="true">{rmInitials}</div>
+                <lightning-icon icon-name="utility:notification" size="small" class="c360-bell"></lightning-icon>
+            </div>
+        </div>
+
+        <!-- ════════════════════════════════════════════════════ TABS ══ -->
+        <div class="c360-nav">
+            <button class={dashboardTabClass} onclick={handleDashboardTab}>Dashboard</button>
+            <button class={productsTabClass} onclick={handleProductsTab}>Products</button>
+        </div>
+
+        <template if:true={showDashboard}>
+
+            <!-- ══════════════════════════════════════ ACTION BUTTONS ══ -->
+            <div class="c360-actions">
+                <button class="c360-action-btn">PREPARE MEETING</button>
+                <button class="c360-action-btn">LOG INTERACTION</button>
+                <button class="c360-action-btn">START APPLICATION</button>
+                <button class="c360-action-btn">SEND SUMMARY</button>
+                <button class="c360-action-btn">REQUEST SUPPORT</button>
+                <button class="c360-action-btn">ESCALATE RISK</button>
+            </div>
+
+            <!-- ══════════════════════════════════ ACCOUNT DETAILS BANNER ══ -->
+            <div class="c360-banner">
+                <div class="c360-banner-identity">
+                    <div class="c360-banner-icon-wrap">
+                        <lightning-icon icon-name="standard:account" size="large" class="c360-banner-icon"></lightning-icon>
+                    </div>
+                    <div class="c360-banner-name-block">
+                        <h2 class="c360-banner-company">{accountName}</h2>
+                        <div class="c360-banner-tags">
+                            <span class="c360-tag">COMMERCIAL BANKING</span>
+                            <span class="c360-tag-sep">&bull;</span>
+                            <span class="c360-tag">{industry}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="c360-banner-kpis">
+                    <!-- FICA COMPLIANCE -->
+                    <div class="c360-kpi-tile">
+                        <div class="c360-kpi-heading">FICA COMPLIANCE</div>
+                        <div class="c360-kpi-row">
+                            <span class="c360-kpi-sub">PROGRESS</span>
+                            <span class="c360-kpi-val">{ficaProgress}</span>
+                        </div>
+                        <div class="c360-kpi-row c360-kpi-row--status">
+                            <span class="c360-kpi-sub">STATUS</span>
+                            <span class={ficaStatusClass}>{ficaStatus}</span>
+                        </div>
+                    </div>
+
+                    <!-- RELATIONSHIP -->
+                    <div class="c360-kpi-tile">
+                        <div class="c360-kpi-heading">RELATIONSHIP</div>
+                        <div class="c360-kpi-row">
+                            <span class="c360-kpi-sub">TENURE</span>
+                            <span class="c360-kpi-val">{tenureLabel}</span>
+                        </div>
+                        <div class="c360-kpi-row c360-kpi-row--status">
+                            <span class="c360-kpi-sub">STRENGTH</span>
+                            <span class="c360-kpi-status c360-kpi-status--red">Red</span>
+                        </div>
+                    </div>
+
+                    <!-- CLIENT POSITION -->
+                    <div class="c360-kpi-tile c360-kpi-tile--last">
+                        <div class="c360-kpi-heading">CLIENT POSITION</div>
+                        <div class="c360-kpi-row">
+                            <span class="c360-kpi-sub">HEALTH</span>
+                            <span class="c360-kpi-status c360-kpi-status--amber">Amber</span>
+                        </div>
+                        <div class="c360-kpi-row c360-kpi-row--status">
+                            <span class="c360-kpi-sub">OPPORTUNITY</span>
+                            <span class="c360-kpi-val">High</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ════════════════════════════════════════ LOADING STATE ══ -->
+            <template if:true={isLoading}>
+                <div class="c360-loading-panels">
+                    <lightning-spinner alternative-text="Loading account data" size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <!-- ═══════════════════════════════════════ METRIC PANELS ══ -->
+            <template if:false={isLoading}>
+                <div class="c360-panels">
+
+                    <!-- Panel 1 — Revenue & Cash Flow -->
+                    <div class="c360-panel">
+                        <div class="c360-panel-header">
+                            <lightning-icon icon-name="utility:trending" size="x-small" class="c360-panel-icon"></lightning-icon>
+                            <span class="c360-panel-title">REVENUE AND CASH FLOW</span>
+                        </div>
+                        <div class="c360-panel-body">
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Client Turnover</span>
+                                <span class="c360-metric-value">--</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Cash Flow Movement</span>
+                                <span class="c360-metric-value">--</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Total Revenue</span>
+                                <span class="c360-metric-value">{totalRevenue}</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Deposit Growth</span>
+                                <span class="c360-metric-value">--</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Lending Growth</span>
+                                <span class="c360-metric-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2 — Profitability Metrics -->
+                    <div class="c360-panel">
+                        <div class="c360-panel-header">
+                            <lightning-icon icon-name="utility:chart" size="x-small" class="c360-panel-icon"></lightning-icon>
+                            <span class="c360-panel-title">PROFITABILITY METRICS</span>
+                        </div>
+                        <div class="c360-panel-body">
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Profit Before Tax (PBT)</span>
+                                <span class="c360-metric-value">{profitBeforeTax}</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Profit After Tax (PAT)</span>
+                                <span class="c360-metric-value">{profitAfterTax}</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Client Profitability</span>
+                                <span class="c360-metric-value">{clientProfitability}</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Profitability Ranking</span>
+                                <span class="c360-metric-value">--</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Margin Trend</span>
+                                <span class="c360-metric-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 3 — Return & Efficiency -->
+                    <div class="c360-panel">
+                        <div class="c360-panel-header">
+                            <lightning-icon icon-name="utility:lightning_strike" size="x-small" class="c360-panel-icon"></lightning-icon>
+                            <span class="c360-panel-title">RETURN AND EFFICIENCY</span>
+                        </div>
+                        <div class="c360-panel-body">
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">RORC</span>
+                                <span class="c360-metric-value">--</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Risk Adjusted Return</span>
+                                <span class="c360-metric-value">--</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Return on Exposure</span>
+                                <span class="c360-metric-value">--</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Cost to Serve</span>
+                                <span class="c360-metric-value">{costToServe}</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">VAPM</span>
+                                <span class="c360-metric-value">{vapm}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel 4 — Balance Sheet & Exposure -->
+                    <div class="c360-panel">
+                        <div class="c360-panel-header">
+                            <lightning-icon icon-name="utility:moneybag" size="x-small" class="c360-panel-icon"></lightning-icon>
+                            <span class="c360-panel-title">BALANCE SHEET AND EXPOSURE</span>
+                        </div>
+                        <div class="c360-panel-body">
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Average Advances</span>
+                                <span class="c360-metric-value">--</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Average Deposits</span>
+                                <span class="c360-metric-value">--</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Total Exposure</span>
+                                <span class="c360-metric-value">{totalExposure}</span>
+                            </div>
+                            <div class="c360-metric">
+                                <span class="c360-metric-label">Utilisation</span>
+                                <span class="c360-metric-value">--</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /c360-panels -->
+            </template>
+
+        </template><!-- /showDashboard -->
+
+        <template if:true={showProducts}>
+            <div class="c360-tab-placeholder">
+                <p>Products view coming soon.</p>
+            </div>
+        </template>
+
+        <!-- ══════════════════════════════════════ ABBY AGENT FAB ══ -->
+        <button class="c360-agent-fab" onclick={handleAgentOpen} title="Ask Abby">
+            <span class="c360-agent-face" aria-hidden="true">
+                <span class="c360-agent-eyes">
+                    <span class="c360-eye"></span>
+                    <span class="c360-eye"></span>
+                </span>
+                <span class="c360-agent-mouth"></span>
+            </span>
+        </button>
+
+    </div><!-- /c360-wrapper -->
+
+
+</template>

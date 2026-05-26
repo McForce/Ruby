@@ -6,7 +6,13 @@
       "Bash(sf org *)",
       "Bash(sf data *)",
       "PowerShell($env:SF_DISABLE_AUTOUPDATE=1; sf data query --query \"SELECT Id, Name FROM ConnectedApplication WHERE Name='AgentforceAPI'\" --target-org Rubi --use-tooling-api 2>&1 | Select-Object -Last 15)",
-      "PowerShell(sf data query --query \"SELECT ConnectedAppId, ClientCredentialUser FROM ConnectedAppOauthPolicy WHERE ConnectedAppId='0H4dM00000BMAYfSAP'\" --target-org Rubi --use-tooling-api 2>&1)"
+      "PowerShell(sf data query --query \"SELECT ConnectedAppId, ClientCredentialUser FROM ConnectedAppOauthPolicy WHERE ConnectedAppId='0H4dM00000BMAYfSAP'\" --target-org Rubi --use-tooling-api 2>&1)",
+      "Bash(sf project *)",
+      "WebFetch(domain:developer.salesforce.com)",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\DesmondMcDonald\\\\Desktop\\\\VS Code Projects\\\\Rubi\"; sf project deploy report --job-id $\\(sf project deploy start --source-dir force-app/main/default/lwc/customerThreeSixtyView --async 2>&1 | Select-String \"Deploy ID:\" | ForEach-Object { $_.ToString\\(\\).Split\\(':'\\)[1].Trim\\(\\) }\\) 2>&1 | Select-String \"Problem|Status:|Succeeded|Failed\" | Select-Object -Last 5)",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\DesmondMcDonald\\\\Desktop\\\\VS Code Projects\\\\Rubi\"; sf project deploy report --job-id $\\(sf project deploy start --source-dir force-app/main/default/lwc/customerThreeSixtyView --async --target-org Rubi 2>&1 | Select-String \"0Afd\" | ForEach-Object { \\($_ -split '\\\\s+'\\)[0] }\\) --target-org Rubi 2>&1 | Select-String \"Problem|accApi\")",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\DesmondMcDonald\\\\Desktop\\\\VS Code Projects\\\\Rubi\"; sf project deploy start --source-dir force-app/main/default/lwc/customerThreeSixtyView --target-org Rubi 2>&1 | Where-Object { $_ -match \"Problem|accApi|Status: \\(Succeeded|Failed\\)\" } | Select-Object -Last 5)",
+      "PowerShell(Set-Location \"c:\\\\Users\\\\DesmondMcDonald\\\\Desktop\\\\VS Code Projects\\\\Rubi\"; sf project deploy start --source-dir force-app/main/default/lwc/customerThreeSixtyView --target-org Rubi 2>&1 | Where-Object { $_ -match \"Succeeded|Failed|Problem\" } | Select-Object -Last 5)"
     ]
   }
 }
