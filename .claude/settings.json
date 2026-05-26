@@ -7,7 +7,10 @@
       "PowerShell(Set-Location \"c:\\\\Users\\\\DesmondMcDonald\\\\Desktop\\\\VS Code Projects\\\\Rubi\"; sf project deploy start --source-dir force-app/main/default/lwc/customerThreeSixtyView --target-org Rubi 2>&1 | Where-Object { $_ -match \"Succeeded|Failed|Changed\" } | Select-Object -Last 6)",
       "PowerShell(sf data query --query \"SELECT Id, Label, QualifiedApiName, DataspaceApiName, Category, Status FROM DataModelObj WHERE QualifiedApiName = 'C360_Profitability_TestData_v2'\" --target-org Rubi --use-tooling-api 2>&1)",
       "PowerShell(sf org display --target-org Rubi --json 2>&1)",
-      "PowerShell(sf org display --target-org Rubi --json | Out-String | ConvertFrom-Json | ForEach-Object { $_.result } | Select-Object instanceUrl, accessToken)"
+      "PowerShell(sf org display --target-org Rubi --json | Out-String | ConvertFrom-Json | ForEach-Object { $_.result } | Select-Object instanceUrl, accessToken)",
+      "Bash(git -C \"force-app/main/default/.claude/worktrees/ecstatic-euler-52fd59\" status)",
+      "Bash(git -C \"force-app/main/default/.claude/worktrees/ecstatic-euler-52fd59\" log --oneline -5)",
+      "Bash(git checkout *)"
     ]
   }
 }
