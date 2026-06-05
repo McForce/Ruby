@@ -63,10 +63,12 @@ export default class CustomerThreeSixtyView extends LightningElement {
     // ── Currency formatter (e.g. 42500000 → "R 42.5m") ───────────────────
     _fmt(value) {
         if (value == null) return '--';
-        const abs = Math.abs(value);
-        if (abs >= 1_000_000) return `R ${(value / 1_000_000).toFixed(1)}m`;
-        if (abs >= 1_000)     return `R ${(value / 1_000).toFixed(0)}k`;
-        return `R ${value.toFixed(0)}`;
+        const num = Number(value);
+        if (!Number.isFinite(num)) return '--';
+        const abs = Math.abs(num);
+        if (abs >= 1_000_000) return `R ${(num / 1_000_000).toFixed(1)}m`;
+        if (abs >= 1_000)     return `R ${(num / 1_000).toFixed(0)}k`;
+        return `R ${num.toFixed(0)}`;
     }
 
     // ── Derived display values ─────────────────────────────────────────────
@@ -79,6 +81,12 @@ export default class CustomerThreeSixtyView extends LightningElement {
     get profitBeforeTax()     { return this._fmt(this._data?.profitBeforeTax); }
     get profitAfterTax()      { return this._fmt(this._data?.profitAfterTax); }
     get clientProfitability() { return this._fmt(this._data?.clientProfitability); }
+    get clientTurnover()      { return this._fmt(this._data?.clientTurnover); }
+    get cashFlowMovement()    { return this._fmt(this._data?.cashFlowMovement); }
+    get lendingGrowth()       { return this._fmt(this._data?.lendingGrowth); }
+    get averageAdvances()     { return this._fmt(this._data?.averageAdvances); }
+    get averageDeposits()     { return this._fmt(this._data?.averageDeposits); }
+    get marginTrend()         { return this._data?.marginTrend || '--'; }
 
     get ficaProgress() {
         return this._data?.ficaCifFlag ? '100%' : '--';

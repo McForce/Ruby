@@ -69,13 +69,19 @@ public with sharing class BB_C360_PromptHandler {
             'Industry: '                  + valueOf(d.industry),
             'FICA Compliant: '            + booleanLabel(d.ficaCifFlag),
             'Length of Relationship: '    + valueOf(d.lengthOfRelationship) + ' years',
-            'VAPM: '                      + valueOf(d.vapm),
-            'Total Revenue (ZAR): '       + valueOf(d.totalRevenue),
             'Total Exposure (ZAR): '      + valueOf(d.totalExposure),
-            'Cost to Serve (ZAR): '       + valueOf(d.costToServe),
+            'Client Turnover (ZAR): '     + valueOf(d.clientTurnover),
+            'Cash Flow Movement (ZAR): '  + valueOf(d.cashFlowMovement),
+            'Total Revenue (ZAR): '       + valueOf(d.totalRevenue),
+            'Lending Growth (ZAR): '      + valueOf(d.lendingGrowth),
+            'VAPM: '                      + valueOf(d.vapm),
             'Profit Before Tax (ZAR): '   + valueOf(d.profitBeforeTax),
             'Profit After Tax (ZAR): '    + valueOf(d.profitAfterTax),
-            'Client Profitability (ZAR): '+ valueOf(d.clientProfitability)
+            'Client Profitability (ZAR): '+ valueOf(d.clientProfitability),
+            'Cost to Serve (ZAR): '       + valueOf(d.costToServe),
+            'Average Advances (ZAR): '    + valueOf(d.averageAdvances),
+            'Average Deposits (ZAR): '    + valueOf(d.averageDeposits),
+            'Margin Trend: '              + valueOf(d.marginTrend)
         };
         return String.join(lines, '\n');
     }

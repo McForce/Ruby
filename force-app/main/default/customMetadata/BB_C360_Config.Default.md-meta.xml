@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ConsumerSecret__c is optional for this connected app (isConsumerSecretOptional=true).     -->
+<!-- If your org setup requires a secret, enter it directly in                                  -->
+<!-- Setup > Custom Metadata Types > BB C360 Config > Manage Records > Default.                -->
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Default</label>
+    <protected>false</protected>
+    <values>
+        <field>ConsumerKey__c</field>
+        <value xsi:type="xsd:string">3MVG9WVXk15qiz1JgNT1hWLIOz6LIrloMgEZgd42rFW7YvSMBMbCjS3Qt24SGEcldyCe0iHM5HuVxUlO17ZXA</value>
+    </values>
+    <values>
+        <field>ConsumerSecret__c</field>
+        <value xsi:type="xsd:string"></value>
+    </values>
+</CustomMetadata>

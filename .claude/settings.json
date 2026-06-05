@@ -10,7 +10,11 @@
       "PowerShell(sf org display --target-org Rubi --json | Out-String | ConvertFrom-Json | ForEach-Object { $_.result } | Select-Object instanceUrl, accessToken)",
       "Bash(git -C \"force-app/main/default/.claude/worktrees/ecstatic-euler-52fd59\" status)",
       "Bash(git -C \"force-app/main/default/.claude/worktrees/ecstatic-euler-52fd59\" log --oneline -5)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "Bash(git fetch *)",
+      "Bash(git push *)",
+      "PowerShell(git -C \"C:\\\\Users\\\\DesmondMcDonald\\\\Desktop\\\\VS Code Projects\\\\Rubi\" diff force-app/main/default/classes/BB_C360_DataCloudService.cls)",
+      "PowerShell(git -C \"C:\\\\Users\\\\DesmondMcDonald\\\\Desktop\\\\VS Code Projects\\\\Rubi\" diff force-app/main/default/lwc/customerThreeSixtyView/customerThreeSixtyView.html force-app/main/default/lwc/customerThreeSixtyView/customerThreeSixtyView.js)"
     ]
   }
 }
