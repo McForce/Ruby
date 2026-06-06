@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuthProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customMetadataTypeRecord>lwt__DataCloudAuthProvider__mdt.BB_C360_DataCloud</customMetadataTypeRecord>
+    <executionUser>mdmcdonaldrubytest@gmail.com</executionUser>
+    <friendlyName>BB_C360_DataCloud</friendlyName>
+    <includeOrgIdInIdentifier>false</includeOrgIdInIdentifier>
+    <isPkceEnabled>false</isPkceEnabled>
+    <plugin>lwt__DataCloudAuthProvider</plugin>
+    <providerType>Custom</providerType>
+    <requireMfa>false</requireMfa>
+    <sendAccessTokenInHeader>false</sendAccessTokenInHeader>
+    <sendClientCredentialsInHeader>false</sendClientCredentialsInHeader>
+    <sendSecretInApis>false</sendSecretInApis>
+</AuthProvider>

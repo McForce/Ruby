@@ -25,8 +25,8 @@
         <scopes>CDP</scopes>
     </oauthConfig>
     <oauthPolicy>
-        <ipRelaxation>ENFORCE</ipRelaxation>
-        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <ipRelaxation>BYPASS</ipRelaxation>
+        <isTokenExchangeFlowEnabled>true</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>
     <permissionSetName>Data Graph</permissionSetName>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>mdmcdonald111@gmail.com</contactEmail>
+    <label>BB C360 Data Graph JWT</label>
+    <oauthConfig>
+        <callbackUrl>https://orgfarm-a1df47453b-dev-ed.develop.my.salesforce.com/services/oauth2/callback</callbackUrl>
+        <certificate>MIIEgDCCA2igAwIBAgIOAZ6SDxyTAAAAAGdxkwUwDQYJKoZIhvcNAQELBQAwezEUMBIGA1UEAwwLQkJfQzM2MF9KV1QxGDAWBgNVBAsMDzAwRGRNMDAwMDB2ek1pazEXMBUGA1UECgwOU2FsZXNmb3JjZS5jb20xFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xCzAJBgNVBAgMAkNBMQswCQYDVQQGEwJVUzAeFw0yNjA2MDQwOTU1MjRaFw0yNzA2MDQwMDAwMDBaMHsxFDASBgNVBAMMC0JCX0MzNjBfSldUMRgwFgYDVQQLDA8wMERkTTAwMDAwdnpNaWsxFzAVBgNVBAoMDlNhbGVzZm9yY2UuY29tMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMQswCQYDVQQIDAJDQTELMAkGA1UEBhMCVVMwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDG85h8blmUgmmFgsZICrkiCMczFqLvLWlHLkpsUHjhFGHjDp/K1OuZzkO2I2ZfhpUhhN2PFrybjzQH4v/y2Zoh0FCS1FMluOqlF2FDecuOq8g5sxd1NKvTjum+pnEixX+mOvuqEcpMapxfhSKKmdgn8uxHpUPuJyYX4QdUUT3Ns7i/4c22H4u0xArMbX5dxERdrFdb0KBRhPU8jM206FFu1C1aszh2foY/Pw62xXHzPxsY3Qe4BS9fcxj89RZ9NFLfgvfSYqtRzaDEvDcVhN+4TNL2ULasYA6MoarerRhR+ReUDF1UbH2IMHjDoXy2t1WY9f0z1l7OmcXHZl4jZanPAgMBAAGjggEAMIH9MB0GA1UdDgQWBBS+AzFjE+7yMxe/Jv94rFc3T0NGxTAWBgNVHREEDzANggtCQl9DMzYwX0pXVDAPBgNVHRMBAf8EBTADAQH/MIGyBgNVHSMEgaowgaeAFL4DMWMT7vIzF78m/3isVzdPQ0bFoX+kfTB7MRQwEgYDVQQDDAtCQl9DMzYwX0pXVDEYMBYGA1UECwwPMDBEZE0wMDAwMHZ6TWlrMRcwFQYDVQQKDA5TYWxlc2ZvcmNlLmNvbTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzELMAkGA1UECAwCQ0ExCzAJBgNVBAYTAlVTgg4BnpIPHJMAAAAAZ3GTBTANBgkqhkiG9w0BAQsFAAOCAQEAlCSFMXXd79cLvJNgu4ePCHMXpV0HySQwzInV3WvNu9I+WaOSyJFyjk2RFeieCz3NsfM3G8uLD2EO3RgfViL/enNrgj/0vIBxDqXJIrvU4jITXL2nXAWwAVNVTxblW5DtETlhS+yuwR08BDfSQA/2aqMeGmo7o7seavcIh8Xu+zXDx/DjXsnt9k5xcU+AvYKCWW2qxxulirVRLt5K5ryjwws0UlO9lc1ziPGDuTt57WtkX1ZSnuqO+wO3vlgEv7ogHvVRjfg457Jk4dubGE2gsjJfDttGVCfdYFFOlQw8s0U53+aI3HkLhU3VEMbzU6Bg5m//CkMzuxvmXxNGlEPwkg==</certificate>
+        <consumerKey>3MVG9WVXk15qiz1JgNT1hWLIOzxjYk76P_W2xKKaD4ZntCp63Y8OtfPp1HVPorOYbtnWeWAiBvQE2ty5CIgRU</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>true</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+        <scopes>CDPProfile</scopes>
+        <scopes>CDPQuery</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>BYPASS</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>Data Graph</permissionSetName>
+    <profileName>System Administrator</profileName>
+    <profileName>Minimum Access - API Only Integrations</profileName>
+</ConnectedApp>
